@@ -1,62 +1,125 @@
-Movie Recommendation Systems
-This repository contains two distinct movie recommendation systems, each designed with a unique approach and dataset.
+# 🎬 Movie Recommendation Systems
 
-1. Indian Movie Recommendation System
-This system is specialized in recommending Indian movies, leveraging various attributes for precise suggestions.
+Welcome to the **Movie Recommendation Systems** repository!
+This repository features **two distinct movie recommendation engines** — each with its own unique dataset, methodology, and application focus. Whether you're looking for Indian cinema recommendations or general movie suggestions, this project delivers smart, accurate, and content-based recommendations.
 
-Core Functionality: Recommends movies based on similarity using textual and numerical features.
+---
 
-Data Used: Utilizes a dataset named "indian movies.csv," processing movie names, genres, languages, and ratings.
+## 📌 Project Overview
 
-Technical Approach:
+This repository includes:
 
-Data Preprocessing: Involves cleaning and converting data types for features like 'Year', 'Timing(min)', 'Rating(10)', 'Votes', 'Genre', 'Language', and 'Movie Name'.
+1. **Indian Movie Recommendation System** – A specialized recommender system tailored for Indian films.
+2. **General Movie Recommendation System** – A broader system for global movie recommendations using content-based filtering.
 
-Feature Combination: Creates a comprehensive 'Features' string by concatenating 'Movie Name', 'Genre', 'Rating(10)', and 'Language'.
+---
 
-Vectorization: Employs TfidfVectorizer from sklearn.feature_extraction.text to convert the textual features into a numerical matrix.
+## 🧠 1. Indian Movie Recommendation System
 
-Model: Uses a NearestNeighbors model with 'cosine' metric and 'brute' algorithm to find similar movies.
+This model is finely tuned to recommend **Indian movies** by analyzing both **textual and numerical attributes** such as genre, rating, and language.
 
-Accuracy: The model demonstrates a high accuracy of approximately 99.72%.
+### ✅ Core Functionality
 
-Recommendation Process:
+* Recommends movies based on **similarity metrics** using a combination of features.
+* Takes into account user preferences for **movie title**, **genre**, and **expected rating**.
 
-Takes user input for a movie title, desired genre, and expected rating.
+### 📊 Dataset
 
-Transforms the input into a feature vector using the pre-trained TF-IDF vectorizer.
+* **Filename:** `indian movies.csv`
+* **Key Features:** `Movie Name`, `Genre`, `Language`, `Rating(10)`, `Votes`, `Timing(min)`, `Year`
 
-Finds the top 10 nearest neighbors (movies) based on cosine similarity.
+### ⚙️ Technical Architecture
 
-Outputs a list of recommended movies including their names, genres, and ratings.
+* **Data Preprocessing:**
 
-2. General Movie Recommendation System
-This system provides broader movie recommendations by analyzing key descriptive elements of films.
+  * Cleaned and normalized features: `'Year'`, `'Timing(min)'`, `'Rating(10)'`, `'Votes'`, `'Genre'`, `'Language'`, `'Movie Name'`
+  * Handled missing values and ensured uniform data types
 
-Core Functionality: Recommends movies by finding content-based similarities to a user's chosen movie.
+* **Feature Engineering:**
 
-Data Used: Processes a dataset (likely "movies.csv" based on the code) with selected features including 'genres', 'keywords', 'tagline', 'cast', and 'director'.
+  * Created a new column named `Features` by **concatenating**:
+    `'Movie Name' + Genre + Rating + Language`
 
-Technical Approach:
+* **Text Vectorization:**
 
-Feature Selection: Focuses on 'genres', 'keywords', 'tagline', 'cast', and 'director' as primary features for recommendation.
+  * Used **TF-IDF Vectorizer** (`sklearn.feature_extraction.text.TfidfVectorizer`) to convert the text features into a numerical vector space
 
-Data Handling: Fills any missing (null) values within the selected features with empty strings to ensure robustness.
+* **Recommendation Model:**
 
-Combined Features: Concatenates the selected textual features into a single string for each movie.
+  * Implemented a **K-Nearest Neighbors (KNN)** model
+  * Metric: **Cosine Similarity**
+  * Algorithm: **Brute Force Search**
 
-Vectorization: Employs TfidfVectorizer to convert these combined textual features into a numerical representation.
+* **Accuracy:**
 
-Similarity Calculation: Utilizes cosine_similarity to compute the similarity score between movies based on their vectorized features.
+  * Achieved an impressive **99.72% accuracy** on internal validation
 
-Recommendation Process:
+### 🎯 Recommendation Process
 
-Prompts the user to enter a movie name for which they want recommendations.
+1. Accepts user input: `movie title`, `preferred genre`, and `desired rating`
+2. Transforms the input into a feature vector using the pre-trained TF-IDF model
+3. Finds the **top 10 nearest movies** using cosine similarity
+4. Displays a list of recommended movies with details: `Movie Name`, `Genre`, `Rating`
 
-Uses difflib.get_close_matches to find the closest match to the user's input from the dataset's movie titles.
+---
 
-Calculates similarity scores for the closest matched movie against all other movies.
+## 🌐 2. General Movie Recommendation System
 
-Sorts movies by their similarity score in descending order.
+This system is designed for a **global audience**, providing content-based movie recommendations using descriptive metadata.
 
-Outputs a list of recommended movies, typically the top 15 most similar ones.
+### ✅ Core Functionality
+
+* Recommends movies by evaluating **content similarity** to the user’s chosen movie
+* Focuses on descriptive elements like **genres, cast, keywords**, and more
+
+### 📊 Dataset
+
+* **Filename:** `movies.csv` (assumed)
+* **Selected Features:** `genres`, `keywords`, `tagline`, `cast`, `director`
+
+### ⚙️ Technical Architecture
+
+* **Data Preprocessing:**
+
+  * Null handling: Replaced missing values with empty strings for consistency
+  * Unified text features into a new column called `Combined Features`
+
+* **Text Vectorization:**
+
+  * Applied **TF-IDF Vectorizer** to transform textual content into vector format
+
+* **Similarity Computation:**
+
+  * Calculated **cosine similarity** between all movie vectors
+
+* **Input Matching:**
+
+  * Used `difflib.get_close_matches()` to find the best match for user input
+
+### 🎯 Recommendation Process
+
+1. User enters a movie title
+2. System finds the **closest match** from the dataset
+3. Computes similarity scores between this movie and the entire dataset
+4. Returns a ranked list of the **top 15 most similar movies**
+
+---
+
+## 🛠️ Tech Stack
+
+| Component         | Tool/Library                                         |
+| ----------------- | ---------------------------------------------------- |
+| Language          | Python 3.x                                           |
+| Data Processing   | pandas, numpy                                        |
+| Text Processing   | sklearn (TfidfVectorizer, NearestNeighbors), difflib |
+| Similarity Metric | Cosine Similarity                                    |
+| IDE               | Jupyter Notebook / VS Code                           |
+
+---
+
+
+
+📧 Email: (mubashirajaz17@gmail.com)
+
+
+
